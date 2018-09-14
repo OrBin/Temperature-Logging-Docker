@@ -39,6 +39,6 @@ echo "Running containers..."
 echo "Configuration file: $config_file"
 echo "Port: $port"
 
-docker run -d -p 8081:80 --name temperature_logging_back_end -v $config_file:/app/config.json orbin/temperature-logging-back-end
-docker run -d -p 8082:80 --name temperature_logging_front_end orbin/temperature-logging-front-end
+docker run -d -p 8084:80 --name temperature_logging_back_end -v $config_file:/app/config.json orbin/temperature-logging-back-end
+docker run -d -p 8085:80 --name temperature_logging_front_end orbin/temperature-logging-front-end
 docker run -d -p $port:80 --name temperature_logging_master -v /var/run/docker.sock:/var/run/docker.sock orbin/temperature-logging
