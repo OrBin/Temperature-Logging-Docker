@@ -23,6 +23,10 @@ then
         then
             echo "Error: invalid port number $port"
             print_usage_and_exit 2
+        elif [ `netstat -anp 2>/dev/null | grep LISTEN | cut -c21-44 | grep ":$port " | wc -l` = 1 ]
+        then
+            echo "Error: port $port is in use, please choose another port"
+            print_usage_and_exit 3
         fi
     else
         print_usage_and_exit 1
