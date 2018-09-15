@@ -1,0 +1,24 @@
+version: "3"
+services:
+  master:
+    build: .
+    ports:
+      - "8086:80"
+    depends_on:
+      - "temperature_logging_back_end"
+      - "temperature_logging_front_end"
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:6.3.2
+    ports:
+      - "9200:9200"
+    volumes:
+      - /usr/share/elasticsearch/:/usr/share/elasticsearch/
+  temperature_logging_back_end:
+    image: orbin/temperature-logging-back-end
+    volumes:
+      - /code/dockerfiles/temperature-logging-docker/back_end_config.json:/app/config.json
+    depends_on:
+      - "elasticsearch"
+  temperature_logging_front_end:
+    image: orbin/temperature-logging-front-end
+
