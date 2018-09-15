@@ -9,8 +9,6 @@ services:
       - "temperature_logging_front_end"
   elasticsearch:
     image: docker.elastic.co/elasticsearch/elasticsearch:6.3.2
-    ports:
-      - "9200:9200"
     volumes:
       - /usr/share/elasticsearch/:/usr/share/elasticsearch/
   temperature_logging_back_end:
