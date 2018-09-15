@@ -14,9 +14,10 @@ services:
   temperature_logging_back_end:
     image: orbin/temperature-logging-back-end
     volumes:
-      - /code/dockerfiles/temperature-logging-docker/back_end_config.json:/app/config.json
+      - ./back_end_config.json:/app/config.json
     depends_on:
       - "elasticsearch"
+    restart:always
   temperature_logging_front_end:
     image: orbin/temperature-logging-front-end
 
