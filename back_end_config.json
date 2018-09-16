@@ -1,0 +1,4 @@
+{
+  "db_host": "elasticsearch",
+  "debug": false
+}
