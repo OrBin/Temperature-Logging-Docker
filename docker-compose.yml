@@ -14,8 +14,11 @@ services:
     image: postgres
     volumes:
       - ./db_storage/:/var/lib/postgresql/data/
+    ports:
+      - "127.0.0.1:5432:5432"
     environment:
       POSTGRES_PASSWORD: password
+    shm_size: 1g
 
   back_end:
     image: orbin/temperature-logging-back-end
